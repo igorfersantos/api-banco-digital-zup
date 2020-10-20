@@ -49,12 +49,11 @@ Linux
 
 A Documentação para os endpoints e o body esperado pode ser vista em
 
-```
-	http://localhost:8080/swagger-ui.html
-```
+>http://localhost:8080/swagger-ui.html
+
 
 _Primeiro endpoint: Criação de usuário com nome, sobrenomecpf, data de nascimento e e-mail_
+_(a classe DTO pode ser vista na documentação)_
 
-```
-	https://localhost:8080/api/v1/users/criarUsuario
-```
+>https://localhost:8080/api/v1/users/criarUsuario
+
