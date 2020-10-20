@@ -1,6 +1,6 @@
 package br.com.igorfersantos.bancodigitalzup.model;
 
-import lombok.*;
+import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;

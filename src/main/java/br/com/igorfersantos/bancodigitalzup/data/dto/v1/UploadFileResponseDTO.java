@@ -1,4 +1,4 @@
-package br.com.igorfersantos.bancodigitalzup.dto;
+package br.com.igorfersantos.bancodigitalzup.data.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

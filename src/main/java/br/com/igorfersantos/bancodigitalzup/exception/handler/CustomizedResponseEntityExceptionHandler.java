@@ -1,4 +1,4 @@
-package br.com.igorfersantos.bancodigitalzup.exception.handler;
+package br.com.igorfersantos.bancodigitalzup.handler;
 
 import br.com.igorfersantos.bancodigitalzup.exception.AgeException;
 import br.com.igorfersantos.bancodigitalzup.exception.ExceptionResponse;

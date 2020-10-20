@@ -1,4 +1,4 @@
-package br.com.igorfersantos.bancodigitalzup.dto;
+package br.com.igorfersantos.bancodigitalzup.data.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
