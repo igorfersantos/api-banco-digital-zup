@@ -1,5 +1,6 @@
 # Banco Digital Zup
 
+### Status
 O Projeto atualmente se encontra na segunda parte do desafio.
 
 As tecnologias utilizadas até o momento são:
