@@ -30,7 +30,6 @@ Tentei ao máximo aplicar a metodologia dos 12 fatores, usando de variáveis de 
     ***OBS: certifique-se que a base "banco_digital_zup" já foi criada e está vazia, caso contrário o flyway não irá executar as migrações***
 
 
-Linux
 ```
 	./mvwn flyway:migrate
 ```
@@ -38,7 +37,6 @@ Linux
 3.	Dê start na API
 
 
-Linux
 ```
 	./mvnw clean spring-boot:run
 ```
