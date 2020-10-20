@@ -7,6 +7,7 @@ O Projeto atualmente se encontra na segunda parte do desafio.
 
 As tecnologias utilizadas até o momento são:
 
+- Java 11
 - Spring Data JPA para consultas no banco
 - Spring Web para criação dos serviços REST 
 - Spring MockMvc para testar os serviços
