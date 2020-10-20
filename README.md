@@ -31,14 +31,14 @@ Tentei ao máximo aplicar a metodologia dos 12 fatores, usando de variáveis de 
 
 
 ```
-	./mvwn flyway:migrate
+./mvwn flyway:migrate
 ```
 
 3.	Dê start na API
 
 
 ```
-	./mvnw clean spring-boot:run
+./mvnw clean spring-boot:run
 ```
 
 
