@@ -1,7 +1,7 @@
 # Banco Digital Zup
 
 ### Status
-O Projeto atualmente se encontra na segunda parte do desafio.
+O Projeto atualmente se encontra na terceira parte das seis do desafio.
 
 ---
 
