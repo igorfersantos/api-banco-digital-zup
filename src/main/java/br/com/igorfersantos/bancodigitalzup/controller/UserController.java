@@ -1,7 +1,7 @@
 package br.com.igorfersantos.bancodigitalzup.controller;
 
-import br.com.igorfersantos.bancodigitalzup.data.dto.v1.UserDTO;
-import br.com.igorfersantos.bancodigitalzup.service.UserService;
+import br.com.igorfersantos.bancodigitalzup.dto.UserDTO;
+import br.com.igorfersantos.bancodigitalzup.services.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,19 +40,4 @@ public class UserController {
 
         return new ResponseEntity<>(usuario, headers, HttpStatus.CREATED);
     }
-
-    //@ApiOperation("Recebe ")
-
-    /*@ApiOperation(value = "cria uma conta física a partir de um usuario")
-    @PostMapping("/criarContaFisica")
-    public ResponseEntity<?> criarContaFisica() { //public ResponseEntity<ContaFisicaDTO> criarContaFisica(@Valid @RequestBody ContaFisicaDTO dto)
-        *//*UserDTO usuario = userService.save(dto);
-        ResponseEntity<UserDTO> responseEntity = new ResponseEntity<>(usuario, HttpStatus.CREATED);
-
-        WebMvcLinkBuilder controllerLinkBuilder =  WebMvcLinkBuilder.linkTo(WebMvcLinkBuilder.methodOn())*//*
-        HttpHeaders headers = new HttpHeaders();
-        headers.setLocation(URI.create("http://localhost:8080/api/v1/users/teste"));
-
-        return new ResponseEntity<>("teste", headers, HttpStatus.CREATED);
-    }*/
 }

@@ -1,16 +1,12 @@
 package br.com.igorfersantos.bancodigitalzup.model;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Set;
 
 
-@Getter @Setter @NoArgsConstructor @EqualsAndHashCode
+@Data
 @Table(name = "enderecos")
 @Entity
 public class Endereco implements Serializable {

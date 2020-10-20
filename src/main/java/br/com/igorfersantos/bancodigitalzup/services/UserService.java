@@ -1,9 +1,9 @@
-package br.com.igorfersantos.bancodigitalzup.service;
+package br.com.igorfersantos.bancodigitalzup.services;
 
 import br.com.caelum.stella.ValidationMessage;
 import br.com.caelum.stella.validation.CPFValidator;
-import br.com.igorfersantos.bancodigitalzup.data.converter.UserAdapter;
-import br.com.igorfersantos.bancodigitalzup.data.dto.v1.UserDTO;
+import br.com.igorfersantos.bancodigitalzup.converter.UserAdapter;
+import br.com.igorfersantos.bancodigitalzup.dto.UserDTO;
 import br.com.igorfersantos.bancodigitalzup.exception.AgeException;
 import br.com.igorfersantos.bancodigitalzup.exception.InvalidFormatException;
 import br.com.igorfersantos.bancodigitalzup.model.User;

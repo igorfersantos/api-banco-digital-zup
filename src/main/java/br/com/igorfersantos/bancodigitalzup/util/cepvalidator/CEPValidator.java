@@ -1,8 +1,6 @@
 package br.com.igorfersantos.bancodigitalzup.util.cepvalidator;
 
 
-import br.com.igorfersantos.bancodigitalzup.exception.InvalidFormatException;
-
 public class CEPValidator {
     // caso necessário
     //@Autowired

@@ -1,9 +1,7 @@
-package br.com.igorfersantos.bancodigitalzup.data.converter;
+package br.com.igorfersantos.bancodigitalzup.converter;
 
-import br.com.igorfersantos.bancodigitalzup.data.dto.v1.EnderecoDTO;
-import br.com.igorfersantos.bancodigitalzup.data.dto.v1.UserDTO;
+import br.com.igorfersantos.bancodigitalzup.dto.EnderecoDTO;
 import br.com.igorfersantos.bancodigitalzup.model.Endereco;
-import br.com.igorfersantos.bancodigitalzup.model.User;
 
 public class EnderecoAdapter {
 

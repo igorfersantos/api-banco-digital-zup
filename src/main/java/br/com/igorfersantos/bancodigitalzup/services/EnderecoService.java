@@ -1,8 +1,9 @@
-package br.com.igorfersantos.bancodigitalzup.service;
+package br.com.igorfersantos.bancodigitalzup.services;
 
-import br.com.igorfersantos.bancodigitalzup.data.converter.EnderecoAdapter;
-import br.com.igorfersantos.bancodigitalzup.data.dto.v1.EnderecoDTO;
+import br.com.igorfersantos.bancodigitalzup.converter.EnderecoAdapter;
+import br.com.igorfersantos.bancodigitalzup.dto.EnderecoDTO;
 import br.com.igorfersantos.bancodigitalzup.exception.InvalidFormatException;
+import br.com.igorfersantos.bancodigitalzup.exception.ResourceNotFoundException;
 import br.com.igorfersantos.bancodigitalzup.model.Endereco;
 import br.com.igorfersantos.bancodigitalzup.model.User;
 import br.com.igorfersantos.bancodigitalzup.repository.EnderecoRepository;
@@ -28,7 +29,8 @@ public class EnderecoService {
         if (!CEPValidator.isFormatoValido(endereco.getCep()))
             throw new InvalidFormatException("Formato de CEP inválido!");
 
-        User usuario = userRepository.findById(id).get();
+        User usuario = userRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("O Usuário requisitado não está cadastrado!"));
         Endereco entity = null;
 
         if (usuario.getEndereco() == null) {

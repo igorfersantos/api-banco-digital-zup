@@ -1,9 +1,8 @@
 package br.com.igorfersantos.bancodigitalzup.exception;
 
-import java.io.Serializable;
+public class AgeException extends RuntimeException {
 
-public class AgeException extends RuntimeException implements Serializable {
-    private static final long serialVersionUID = 3262085839121128086L;
+    private static final long serialVersionUID = 6813292360287835895L;
 
     public AgeException(String message) {
         super(message);

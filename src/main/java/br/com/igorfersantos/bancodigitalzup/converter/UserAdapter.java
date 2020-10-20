@@ -1,10 +1,8 @@
-package br.com.igorfersantos.bancodigitalzup.data.converter;
+package br.com.igorfersantos.bancodigitalzup.converter;
 
-import br.com.igorfersantos.bancodigitalzup.data.dto.v1.UserDTO;
+import br.com.igorfersantos.bancodigitalzup.dto.UserDTO;
 import br.com.igorfersantos.bancodigitalzup.model.User;
-import br.com.igorfersantos.bancodigitalzup.util.DateUtils;
 
-import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 public class UserAdapter {

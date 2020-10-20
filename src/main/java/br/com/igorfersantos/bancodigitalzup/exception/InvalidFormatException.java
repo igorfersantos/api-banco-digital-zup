@@ -1,7 +1,8 @@
 package br.com.igorfersantos.bancodigitalzup.exception;
 
 public class InvalidFormatException extends RuntimeException{
-    private static final long serialVersionUID = 3262085839121128086L;
+
+    private static final long serialVersionUID = 5321813304182724762L;
 
     public InvalidFormatException(String message) {
         super(message);
