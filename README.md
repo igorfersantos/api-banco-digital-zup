@@ -11,7 +11,6 @@ As tecnologias utilizadas até o momento são:
 - Spring Web para criação dos serviços REST 
 - Spring MockMvc para testar os serviços
 - Spring Actuator para monitoramento da API
-- HATEOAS para obter links dos recursos
 - Hibernate Validator para validação dos dados providos nos endpoints
 - Flyway Migration para automatizar a criação das tabelas e dados
 - Swagger e Swagger UI para auto-documentação da API

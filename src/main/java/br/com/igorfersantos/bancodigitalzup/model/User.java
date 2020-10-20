@@ -8,6 +8,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Set;
 
 
 @Getter @Setter @NoArgsConstructor @EqualsAndHashCode
@@ -20,6 +21,10 @@ public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @OneToOne(targetEntity = Endereco.class, cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_endereco")
+    private Endereco endereco = null;
 
     @Column(name = "nome", length = 50, nullable = false)
     private String nome;

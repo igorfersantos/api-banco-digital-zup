@@ -1,47 +1,44 @@
 package br.com.igorfersantos.bancodigitalzup.controller;
 
-import br.com.igorfersantos.bancodigitalzup.data.dto.v1.UserDTO;
-import br.com.igorfersantos.bancodigitalzup.service.UserService;
+import br.com.igorfersantos.bancodigitalzup.data.dto.v1.EnderecoDTO;
+import br.com.igorfersantos.bancodigitalzup.service.EnderecoService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+
 import java.net.URI;
 
-import static br.com.igorfersantos.bancodigitalzup.controller.EnderecoController.ENDERECO_CONTROLLER_URL;
-import static br.com.igorfersantos.bancodigitalzup.controller.EnderecoController.ENDERECO_CREATE_RESOURCE;
+import static br.com.igorfersantos.bancodigitalzup.Application.BASE_URL;
 
 @Api(tags = "Users Endpoint")
 @RestController
-@RequestMapping("/api/v1/users")
-public class UserController {
+@RequestMapping("/api/v1/address")
+public class EnderecoController {
 
     @Autowired
-    UserService userService;
+    EnderecoService enderecoService;
 
-    public static final String USER_CREATE_RESOURCE = "/criarUsuario";
+    public static String ENDERECO_CONTROLLER_URL = BASE_URL + WebMvcLinkBuilder.linkTo(EnderecoController.class).toString();
+    public static final String ENDERECO_CREATE_RESOURCE = "/criarEndereco";
 
-    @ApiOperation("cria um usuário a partir a partir do body")
-    @PostMapping(USER_CREATE_RESOURCE)
-    public ResponseEntity<UserDTO> criarUsuario(@Valid @RequestBody UserDTO dto) {
-        UserDTO usuario = userService.create(dto);
+    @ApiOperation("cria um endereço a partir a partir do body")
+    @PostMapping(ENDERECO_CREATE_RESOURCE + "/{id}")
+    public ResponseEntity<EnderecoDTO> criarEndereco(@Valid @RequestBody EnderecoDTO dto, @PathVariable("id") Long id) {
+        EnderecoDTO enderecoDTO = enderecoService.save(dto, id);
 
-        URI uri = URI.create(ENDERECO_CONTROLLER_URL + ENDERECO_CREATE_RESOURCE + '/' + usuario.getId());
+        URI uri = URI.create(ENDERECO_CONTROLLER_URL + ENDERECO_CREATE_RESOURCE);
         HttpHeaders headers = new HttpHeaders();
         headers.setLocation(uri);
 
-        return new ResponseEntity<>(usuario, headers, HttpStatus.CREATED);
+        return new ResponseEntity<>(enderecoDTO, headers, HttpStatus.CREATED);
     }
-
-    //@ApiOperation("Recebe ")
 
     /*@ApiOperation(value = "cria uma conta física a partir de um usuario")
     @PostMapping("/criarContaFisica")

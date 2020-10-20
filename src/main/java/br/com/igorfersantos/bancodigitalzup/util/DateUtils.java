@@ -5,8 +5,12 @@ import java.time.Period;
 import java.util.Date;
 
 public class DateUtils {
-    private static LocalDate convertToLocalDate(Date dateToConvert) {
+    public static LocalDate convertToLocalDate(Date dateToConvert) {
         return new java.sql.Date(dateToConvert.getTime()).toLocalDate();
+    }
+
+    public static Date convertToDate(LocalDate dateToConvert) {
+        return java.sql.Date.valueOf(dateToConvert);
     }
 
     public static boolean isMaiorDeIdade(LocalDate dataNascimento){

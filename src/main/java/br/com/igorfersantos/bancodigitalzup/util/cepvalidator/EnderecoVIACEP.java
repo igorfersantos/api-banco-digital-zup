@@ -4,10 +4,15 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
+
 @NoArgsConstructor
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true) // Caso a estrutura mude com o tempo
-public class Endereco {
+public class EnderecoVIACEP implements Serializable {
+
+    private static final long serialVersionUID = -8886283677471403617L;
+
     private String cep;
     private String logradouro;
     private String complemento;

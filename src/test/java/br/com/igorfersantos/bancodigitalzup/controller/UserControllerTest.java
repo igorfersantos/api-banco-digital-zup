@@ -38,11 +38,11 @@ class UserControllerTest {
         String sDate = "05/03/1999";
         Date date = new SimpleDateFormat("dd/MM/yyyy").parse(sDate);
 
-        UserDTO userDTO = new UserDTO("teste", "teste", "teste", date, "teste");
+        UserDTO userDTO = new UserDTO(0L, "teste", "teste", "teste", date, "teste");
 
         // garante que já tenha um user "teste"
         try {
-            userService.save(userDTO);
+            userService.create(userDTO);
         } catch (Exception e) {
         }
 
@@ -51,14 +51,14 @@ class UserControllerTest {
                 .content(objectMapper.writeValueAsString(userDTO)))
                 .andExpect(status().isBadRequest());
 
-        UserDTO userDTO2 = new UserDTO("teste", "teste", "teste1", date, "teste");
+        UserDTO userDTO2 = new UserDTO(0L,"teste", "teste", "teste1", date, "teste");
 
         mockMvc.perform(post("/api/v1/users/criarUsuario")
                 .contentType("application/json")
                 .content(objectMapper.writeValueAsString(userDTO2)))
                 .andExpect(status().isBadRequest());
 
-        UserDTO userDTO3 = new UserDTO("teste", "teste", "teste", date, "teste1");
+        UserDTO userDTO3 = new UserDTO(0L,"teste", "teste", "teste", date, "teste1");
 
         mockMvc.perform(post("/api/v1/users/criarUsuario")
                 .contentType("application/json")
@@ -78,8 +78,8 @@ class UserControllerTest {
         // deleta todos os usuários antes de testar
         userRepository.deleteAll();
 
-        UserDTO userDTO = new UserDTO("teste", "teste", "igorfercontato@gmail.com", date, randomCPFValido);
+        UserDTO userDTO = new UserDTO(0L,"teste", "teste", "igorfercontato@gmail.com", date, randomCPFValido);
 
-        userService.save(userDTO);
+        userService.create(userDTO);
     }
 }

@@ -1,9 +1,6 @@
 package br.com.igorfersantos.bancodigitalzup.exception.handler;
 
-import br.com.igorfersantos.bancodigitalzup.exception.AgeException;
-import br.com.igorfersantos.bancodigitalzup.exception.DuplicateException;
-import br.com.igorfersantos.bancodigitalzup.exception.ExceptionResponse;
-import br.com.igorfersantos.bancodigitalzup.exception.InvalidFormatException;
+import br.com.igorfersantos.bancodigitalzup.exception.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -17,9 +14,13 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
+import java.net.URI;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+
+import static br.com.igorfersantos.bancodigitalzup.controller.EnderecoController.ENDERECO_CONTROLLER_URL;
+import static br.com.igorfersantos.bancodigitalzup.controller.EnderecoController.ENDERECO_CREATE_RESOURCE;
 
 @ControllerAdvice
 @RestController
@@ -63,16 +64,6 @@ public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExce
 
     @ExceptionHandler(InvalidFormatException.class)
     public final ResponseEntity<ExceptionResponse> handleInvalidFormatExceptions(Exception ex, WebRequest request) {
-        ExceptionResponse exceptionResponse =
-                new ExceptionResponse(
-                        new Date(),
-                        ex.getMessage(),
-                        request.getDescription(false));
-        return new ResponseEntity<>(exceptionResponse, HttpStatus.BAD_REQUEST);
-    }
-
-    @ExceptionHandler(DuplicateException.class)
-    public final ResponseEntity<ExceptionResponse> handleDuplicateCpfExceptions(Exception ex, WebRequest request) {
         ExceptionResponse exceptionResponse =
                 new ExceptionResponse(
                         new Date(),
