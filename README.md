@@ -3,6 +3,8 @@
 ### Status
 O Projeto atualmente se encontra na segunda parte do desafio.
 
+---
+
 As tecnologias utilizadas até o momento são:
 
 - Spring Data JPA para consultas no banco
