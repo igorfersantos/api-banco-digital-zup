@@ -1,7 +1,7 @@
 package br.com.igorfersantos.bancodigitalzup.converter;
 
-import br.com.igorfersantos.bancodigitalzup.dto.UserDTO;
-import br.com.igorfersantos.bancodigitalzup.model.User;
+import br.com.igorfersantos.bancodigitalzup.data.dto.v1.UserDTO;
+import br.com.igorfersantos.bancodigitalzup.data.model.User;
 
 import java.time.format.DateTimeFormatter;
 

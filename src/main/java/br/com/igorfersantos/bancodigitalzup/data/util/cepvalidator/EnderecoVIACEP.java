@@ -1,4 +1,4 @@
-package br.com.igorfersantos.bancodigitalzup.util.cepvalidator;
+package br.com.igorfersantos.bancodigitalzup.data.util.cepvalidator;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;

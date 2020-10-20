@@ -1,14 +1,14 @@
 package br.com.igorfersantos.bancodigitalzup.services;
 
 import br.com.igorfersantos.bancodigitalzup.converter.EnderecoAdapter;
-import br.com.igorfersantos.bancodigitalzup.dto.EnderecoDTO;
+import br.com.igorfersantos.bancodigitalzup.data.dto.v1.EnderecoDTO;
 import br.com.igorfersantos.bancodigitalzup.exception.InvalidFormatException;
 import br.com.igorfersantos.bancodigitalzup.exception.ResourceNotFoundException;
-import br.com.igorfersantos.bancodigitalzup.model.Endereco;
-import br.com.igorfersantos.bancodigitalzup.model.User;
+import br.com.igorfersantos.bancodigitalzup.data.model.Endereco;
+import br.com.igorfersantos.bancodigitalzup.data.model.User;
 import br.com.igorfersantos.bancodigitalzup.repository.EnderecoRepository;
 import br.com.igorfersantos.bancodigitalzup.repository.UserRepository;
-import br.com.igorfersantos.bancodigitalzup.util.cepvalidator.CEPValidator;
+import br.com.igorfersantos.bancodigitalzup.data.util.cepvalidator.CEPValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,7 +23,7 @@ public class EnderecoService {
     UserRepository userRepository;
 
     @Transactional
-    public EnderecoDTO save(EnderecoDTO dto, Long id){
+    public EnderecoDTO create(EnderecoDTO dto, Long id){
         Endereco endereco = EnderecoAdapter.toEntity(dto);
 
         if (!CEPValidator.isFormatoValido(endereco.getCep()))

@@ -1,14 +1,17 @@
 package br.com.igorfersantos.bancodigitalzup.controller;
 
-import br.com.igorfersantos.bancodigitalzup.dto.UploadFileResponseDTO;
+import br.com.igorfersantos.bancodigitalzup.data.dto.v1.UploadFileResponseDTO;
 import br.com.igorfersantos.bancodigitalzup.services.FileStorageService;
 import io.swagger.annotations.Api;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
+import static br.com.igorfersantos.bancodigitalzup.Application.BASE_URL;
 
 @Api(tags = "FileEndpoint")
 @RestController
@@ -16,6 +19,9 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 public class FileController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(FileController.class);
+
+	public static final String FILE_CONTROLLER_URL = BASE_URL + WebMvcLinkBuilder.linkTo(EnderecoController.class).toString();
+	public static final String FILE_CREATE_RESOURCE = "/uploadFile";
 
 	@Autowired
 	FileStorageService fileStorageService;

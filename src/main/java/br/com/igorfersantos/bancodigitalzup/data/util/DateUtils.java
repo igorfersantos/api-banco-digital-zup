@@ -1,4 +1,4 @@
-package br.com.igorfersantos.bancodigitalzup.util;
+package br.com.igorfersantos.bancodigitalzup.data.util;
 
 import java.time.LocalDate;
 import java.time.Period;

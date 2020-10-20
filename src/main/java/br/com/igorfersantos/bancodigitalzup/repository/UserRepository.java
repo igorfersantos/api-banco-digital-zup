@@ -1,6 +1,6 @@
 package br.com.igorfersantos.bancodigitalzup.repository;
 
-import br.com.igorfersantos.bancodigitalzup.model.User;
+import br.com.igorfersantos.bancodigitalzup.data.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -17,4 +17,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
     @Modifying
     @Query(value = "UPDATE User u SET u.endereco.id = :idEndereco WHERE u.id = :id")
     void updateEndereco(@Param("idEndereco") Long idEndereco, @Param("id") Long id);
+
+
 }

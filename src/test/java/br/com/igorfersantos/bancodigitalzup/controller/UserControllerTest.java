@@ -1,6 +1,6 @@
 package br.com.igorfersantos.bancodigitalzup.controller;
 
-import br.com.igorfersantos.bancodigitalzup.dto.UserDTO;
+import br.com.igorfersantos.bancodigitalzup.data.dto.v1.UserDTO;
 import br.com.igorfersantos.bancodigitalzup.repository.UserRepository;
 import br.com.igorfersantos.bancodigitalzup.services.UserService;
 import com.fasterxml.jackson.databind.ObjectMapper;

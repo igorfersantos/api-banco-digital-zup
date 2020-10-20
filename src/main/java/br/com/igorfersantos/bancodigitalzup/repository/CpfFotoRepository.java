@@ -1,4 +1,7 @@
 package br.com.igorfersantos.bancodigitalzup.repository;
 
-public interface CpfFotoRepository {
+import br.com.igorfersantos.bancodigitalzup.data.model.CpfFoto;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface CpfFotoRepository extends JpaRepository<CpfFoto, Long> {
 }

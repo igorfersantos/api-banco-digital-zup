@@ -1,4 +1,4 @@
-package br.com.igorfersantos.bancodigitalzup.util;
+package br.com.igorfersantos.bancodigitalzup.data.util;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

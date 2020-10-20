@@ -1,6 +1,6 @@
 package br.com.igorfersantos.bancodigitalzup.controller;
 
-import br.com.igorfersantos.bancodigitalzup.dto.UserDTO;
+import br.com.igorfersantos.bancodigitalzup.data.dto.v1.UserDTO;
 import br.com.igorfersantos.bancodigitalzup.services.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

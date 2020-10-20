@@ -1,11 +1,13 @@
-package br.com.igorfersantos.bancodigitalzup.model;
+package br.com.igorfersantos.bancodigitalzup.data.model;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
 
 
+@NoArgsConstructor
 @Data
 @Table(name = "enderecos")
 @Entity

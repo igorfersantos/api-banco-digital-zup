@@ -1,6 +1,6 @@
 package br.com.igorfersantos.bancodigitalzup.controller;
 
-import br.com.igorfersantos.bancodigitalzup.dto.EnderecoDTO;
+import br.com.igorfersantos.bancodigitalzup.data.dto.v1.EnderecoDTO;
 import br.com.igorfersantos.bancodigitalzup.services.EnderecoService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -14,25 +14,26 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.net.URI;
 
-import static br.com.igorfersantos.bancodigitalzup.config.HostConfig.BASE_URL;
+import static br.com.igorfersantos.bancodigitalzup.Application.BASE_URL;
 
-@Api(tags = "Address Endpoint")
+
+@Api(tags = "Address Endpoint - Início")
 @RestController
 @RequestMapping("/api/v1/address")
 public class EnderecoController {
 
+    public static final String ENDERECO_CONTROLLER_URL = BASE_URL + WebMvcLinkBuilder.linkTo(EnderecoController.class).toString();
+    public static final String ENDERECO_CREATE_RESOURCE = "/criarEndereco";
+
     @Autowired
     EnderecoService enderecoService;
 
-    public static String ENDERECO_CONTROLLER_URL = BASE_URL + WebMvcLinkBuilder.linkTo(EnderecoController.class).toString();
-    public static final String ENDERECO_CREATE_RESOURCE = "/criarEndereco";
-
-    @ApiOperation("cria um endereço a partir a partir do body")
+    @ApiOperation("Cria um endereço a partir a partir do body")
     @PostMapping(ENDERECO_CREATE_RESOURCE + "/{id}")
     public ResponseEntity<EnderecoDTO> criarEndereco(@Valid @RequestBody EnderecoDTO dto, @PathVariable("id") Long id) {
-        EnderecoDTO enderecoDTO = enderecoService.save(dto, id);
+        EnderecoDTO enderecoDTO = enderecoService.create(dto, id);
 
-        URI uri = URI.create(ENDERECO_CONTROLLER_URL + ENDERECO_CREATE_RESOURCE);
+        URI uri = URI.create(FileController.FILE_CONTROLLER_URL + FileController.FILE_CREATE_RESOURCE + "/" + id);
         HttpHeaders headers = new HttpHeaders();
         headers.setLocation(uri);
 

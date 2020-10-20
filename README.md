@@ -24,8 +24,6 @@ Tentei ao máximo aplicar a metodologia dos 12 fatores, usando de variáveis de 
 
 # Inicializando o projeto pela linha de comando/fora da IDE (sem Docker)
 
----
-
 
 1.	Navegue até a pasta banco-digital-zup/App
 2.	Execute o flyway migration para inicilizar o banco de dados
@@ -48,7 +46,6 @@ Linux
 
 # Endpoint de início
 
----
 
 A Documentação para os endpoints e o body esperado pode ser vista em
 
@@ -61,13 +58,3 @@ _Primeiro endpoint: Criação de usuário com nome, sobrenomecpf, data de nascim
 ```
 	https://localhost:8080/api/v1/users/criarUsuario
 ```
-
-{
-    "cpf": "507.027.350-78",
-    "dataNascimento": "2020-05-03",
-    "email": "igorfercontato@gmail.com",
-    "nome": "teste",
-    "sobrenome": "teste"
-}
-
-
