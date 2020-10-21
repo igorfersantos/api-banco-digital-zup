@@ -18,5 +18,5 @@ public class CpfFotoDTO implements Serializable {
     private static final long serialVersionUID = 8683332930676984285L;
 
     private String foto;
-    private UserDTO userDTO = null;
+    private ClienteDTO clienteDTO = null;
 }

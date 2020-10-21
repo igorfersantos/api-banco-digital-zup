@@ -1,5 +1,6 @@
 package br.com.igorfersantos.bancodigitalzup.controller;
 
+import br.com.igorfersantos.bancodigitalzup.config.EndpointUrls;
 import br.com.igorfersantos.bancodigitalzup.data.dto.v1.EnderecoDTO;
 import br.com.igorfersantos.bancodigitalzup.services.EnderecoService;
 import io.swagger.annotations.Api;
@@ -17,19 +18,19 @@ import java.net.URI;
 import static br.com.igorfersantos.bancodigitalzup.Application.BASE_URL;
 
 
-@Api(tags = "Address Endpoint - Início")
+@Api(tags = "Address Endpoint")
 @RestController
-@RequestMapping("/api/v1/address")
+@RequestMapping(EndpointUrls.ENDERECOS_CONTROLLER_V1)
 public class EnderecoController {
 
-    public static final String ENDERECO_CONTROLLER_URL = BASE_URL + WebMvcLinkBuilder.linkTo(EnderecoController.class).toString();
+    public static final String ENDERECO_CONTROLLER_URL= BASE_URL + WebMvcLinkBuilder.linkTo(EnderecoController.class).toString();
     public static final String ENDERECO_CREATE_RESOURCE = "/criarEndereco";
 
     @Autowired
     EnderecoService enderecoService;
 
     @ApiOperation("Cria um endereço a partir a partir do body")
-    @PostMapping(ENDERECO_CREATE_RESOURCE + "/{id}")
+    @PostMapping("/criarEndereco/{id}")
     public ResponseEntity<EnderecoDTO> criarEndereco(@Valid @RequestBody EnderecoDTO dto, @PathVariable("id") Long id) {
         EnderecoDTO enderecoDTO = enderecoService.create(dto, id);
 

@@ -22,12 +22,9 @@ import java.util.Date;
 @AllArgsConstructor
 @EqualsAndHashCode
 @JsonPropertyOrder({"id", "nome", "sobrenome", "email", "dataNascimento", "cpf"})
-public class UserDTO implements Serializable {
+public class ClienteDTO implements Serializable {
 
     private static final long serialVersionUID = -7793778741900173950L;
-
-    @JsonProperty("id")
-    private Long id;
 
     @NotBlank(message = "Nome é obrigatório!")
     private String nome;

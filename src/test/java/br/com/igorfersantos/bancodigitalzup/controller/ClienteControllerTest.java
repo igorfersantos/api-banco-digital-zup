@@ -1,8 +1,8 @@
 package br.com.igorfersantos.bancodigitalzup.controller;
 
-import br.com.igorfersantos.bancodigitalzup.data.dto.v1.UserDTO;
-import br.com.igorfersantos.bancodigitalzup.repository.UserRepository;
-import br.com.igorfersantos.bancodigitalzup.services.UserService;
+import br.com.igorfersantos.bancodigitalzup.data.dto.v1.ClienteDTO;
+import br.com.igorfersantos.bancodigitalzup.repository.ClienteRepository;
+import br.com.igorfersantos.bancodigitalzup.services.ClienteService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +18,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-class UserControllerTest {
+class ClienteControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
@@ -27,10 +27,10 @@ class UserControllerTest {
     private ObjectMapper objectMapper;
 
     @Autowired
-    private UserService userService;
+    private ClienteService clienteService;
 
     @Autowired
-    private UserRepository userRepository;
+    private ClienteRepository clienteRepository;
 
     // Teste gerado antes da implementação de cpf e e-mail válido
     @Test
@@ -38,31 +38,31 @@ class UserControllerTest {
         String sDate = "05/03/1999";
         Date date = new SimpleDateFormat("dd/MM/yyyy").parse(sDate);
 
-        UserDTO userDTO = new UserDTO(0L, "teste", "teste", "teste", date, "teste");
+        ClienteDTO clienteDTO = new ClienteDTO( "teste", "teste", "teste", date, "teste");
 
         // garante que já tenha um user "teste"
         try {
-            userService.create(userDTO);
+            clienteService.create(clienteDTO);
         } catch (Exception e) {
         }
 
         mockMvc.perform(post("/api/v1/users/criarUsuario")
                 .contentType("application/json")
-                .content(objectMapper.writeValueAsString(userDTO)))
+                .content(objectMapper.writeValueAsString(clienteDTO)))
                 .andExpect(status().isBadRequest());
 
-        UserDTO userDTO2 = new UserDTO(0L,"teste", "teste", "teste1", date, "teste");
+        ClienteDTO clienteDTO2 = new ClienteDTO("teste", "teste", "teste1", date, "teste");
 
         mockMvc.perform(post("/api/v1/users/criarUsuario")
                 .contentType("application/json")
-                .content(objectMapper.writeValueAsString(userDTO2)))
+                .content(objectMapper.writeValueAsString(clienteDTO2)))
                 .andExpect(status().isBadRequest());
 
-        UserDTO userDTO3 = new UserDTO(0L,"teste", "teste", "teste", date, "teste1");
+        ClienteDTO clienteDTO3 = new ClienteDTO("teste", "teste", "teste", date, "teste1");
 
         mockMvc.perform(post("/api/v1/users/criarUsuario")
                 .contentType("application/json")
-                .content(objectMapper.writeValueAsString(userDTO3)))
+                .content(objectMapper.writeValueAsString(clienteDTO3)))
                 .andExpect(status().isBadRequest());
     }
 
@@ -76,10 +76,10 @@ class UserControllerTest {
         String randomCPFValido = "507.027.350-78";
 
         // deleta todos os usuários antes de testar
-        userRepository.deleteAll();
+        clienteRepository.deleteAll();
 
-        UserDTO userDTO = new UserDTO(0L,"teste", "teste", "igorfercontato@gmail.com", date, randomCPFValido);
+        ClienteDTO clienteDTO = new ClienteDTO("teste", "teste", "igorfercontato@gmail.com", date, randomCPFValido);
 
-        userService.create(userDTO);
+        clienteService.create(clienteDTO);
     }
 }

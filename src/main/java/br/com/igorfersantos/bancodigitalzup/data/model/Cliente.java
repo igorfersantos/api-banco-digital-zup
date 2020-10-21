@@ -13,7 +13,7 @@ import java.util.Date;
 @Getter @Setter @NoArgsConstructor @EqualsAndHashCode
 @Table(name = "clientes")
 @Entity
-public class User implements Serializable {
+public class Cliente implements Serializable {
 
     private static final long serialVersionUID = -7793778741900173950L;
 
@@ -40,7 +40,7 @@ public class User implements Serializable {
     @Column(name = "cpf", unique = true, length = 15, nullable = false)
     private String cpf;
 
-    public User(String nome, String sobrenome, String email, Date dataNascimento, String cpf) {
+    public Cliente(String nome, String sobrenome, String email, Date dataNascimento, String cpf) {
         this.nome = nome;
         this.sobrenome = sobrenome;
         this.email = email;

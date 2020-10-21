@@ -13,16 +13,17 @@ import org.springframework.context.annotation.ComponentScan;
 })
 @EnableAutoConfiguration
 @ComponentScan
-/*
-@ComponentScan({"br.com.igorfersantos.bancodigitalzup.config"})
-@EntityScan("br.com.igorfersantos.bancodigitalzup.data.model")
-@EnableJpaRepositories("br.com.igorfersantos.bancodigitalzup.repository")*/
 public class Application {
 
 	public static final String BASE_URL = "http://localhost:8080";
 
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
+
+		// cria uma senha encriptada
+		/*BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder(16);
+		String result = bCryptPasswordEncoder.encode("admin123");
+		System.out.println("My hash " + result);*/
 	}
 
 }

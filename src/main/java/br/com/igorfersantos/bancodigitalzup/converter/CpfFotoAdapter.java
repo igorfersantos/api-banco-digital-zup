@@ -6,10 +6,10 @@ import br.com.igorfersantos.bancodigitalzup.data.model.CpfFoto;
 public class CpfFotoAdapter {
 
     public static CpfFoto toEntity(CpfFotoDTO dto){
-        return new CpfFoto(dto.getFoto(), UserAdapter.toEntity(dto.getUserDTO()));
+        return new CpfFoto(dto.getFoto(), ClienteAdapter.toEntity(dto.getClienteDTO()));
     }
 
     public static CpfFotoDTO toDTO(CpfFoto cpfFoto){
-        return new CpfFotoDTO(cpfFoto.getFoto(), UserAdapter.toDTO(cpfFoto.getUser()));
+        return new CpfFotoDTO(cpfFoto.getFoto(), ClienteAdapter.toDTO(cpfFoto.getCliente()));
     }
 }

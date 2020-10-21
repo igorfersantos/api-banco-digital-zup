@@ -1,11 +1,22 @@
 package br.com.igorfersantos.bancodigitalzup.exception;
 
-public class ResourceNotFoundException extends RuntimeException{
+import lombok.Getter;
+import org.springframework.http.HttpStatus;
 
-	private static final long serialVersionUID = 1L;
-	
-	public ResourceNotFoundException(String exception) {
-		super(exception);
-	}
-	
+@Getter
+public class ResourceNotFoundException extends RuntimeException {
+
+    private static final long serialVersionUID = 1L;
+
+    private HttpStatus status = HttpStatus.BAD_REQUEST;
+
+    public ResourceNotFoundException(String exception) {
+        super(exception);
+    }
+
+    public ResourceNotFoundException(String exception, HttpStatus status) {
+        super(exception);
+        this.status = status;
+    }
+
 }

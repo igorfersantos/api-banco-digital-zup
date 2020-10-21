@@ -1,9 +1,6 @@
 package br.com.igorfersantos.bancodigitalzup.exception.handler;
 
-import br.com.igorfersantos.bancodigitalzup.exception.AgeException;
-import br.com.igorfersantos.bancodigitalzup.exception.ExceptionResponse;
-import br.com.igorfersantos.bancodigitalzup.exception.InvalidFormatException;
-import br.com.igorfersantos.bancodigitalzup.exception.ResourceNotFoundException;
+import br.com.igorfersantos.bancodigitalzup.exception.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -17,9 +14,13 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
+import java.net.URI;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+
+import static br.com.igorfersantos.bancodigitalzup.controller.EnderecoController.ENDERECO_CONTROLLER_URL;
+import static br.com.igorfersantos.bancodigitalzup.controller.EnderecoController.ENDERECO_CREATE_RESOURCE;
 
 @ControllerAdvice
 @RestController
@@ -78,7 +79,25 @@ public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExce
                         new Date(),
                         ex.getMessage(),
                         request.getDescription(false));
-        return new ResponseEntity<>(exceptionResponse, HttpStatus.BAD_REQUEST);
+
+        ResourceNotFoundException exRes = (ResourceNotFoundException) ex;
+        return new ResponseEntity<>(exceptionResponse, exRes.getStatus());
+    }
+
+    @ExceptionHandler(ExistentResourceException.class)
+    public final ResponseEntity<ExceptionResponse> handleExistentResourceExceptions(Exception ex, WebRequest request) {
+        ExceptionResponse exceptionResponse =
+                new ExceptionResponse(
+                        new Date(),
+                        ex.getMessage(),
+                        request.getDescription(false));
+
+        ExistentResourceException exRes = (ExistentResourceException) ex;
+
+        if(exRes.getHttpHeaders() == null)
+            return new ResponseEntity<>(exceptionResponse, exRes.getStatus());
+        else
+            return new ResponseEntity<>(exceptionResponse, exRes.getHttpHeaders(), exRes.getStatus());
     }
 
     /*@ExceptionHandler(InvalidJwtAuthenticationException.class)

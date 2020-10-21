@@ -1,21 +1,28 @@
 package br.com.igorfersantos.bancodigitalzup.controller;
 
+import br.com.igorfersantos.bancodigitalzup.config.EndpointUrls;
+import br.com.igorfersantos.bancodigitalzup.converter.CpfFotoAdapter;
+import br.com.igorfersantos.bancodigitalzup.data.dto.v1.CpfFotoDTO;
 import br.com.igorfersantos.bancodigitalzup.data.dto.v1.UploadFileResponseDTO;
+import br.com.igorfersantos.bancodigitalzup.data.model.CpfFoto;
 import br.com.igorfersantos.bancodigitalzup.services.FileStorageService;
 import io.swagger.annotations.Api;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import static br.com.igorfersantos.bancodigitalzup.Application.BASE_URL;
 
-@Api(tags = "FileEndpoint")
+@Api(tags = "File Endpoint")
 @RestController
-@RequestMapping("/api/file/v1")
+@RequestMapping(EndpointUrls.ARQUIVOS_CONTROLLER_V1)
 public class FileController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(FileController.class);
@@ -27,15 +34,10 @@ public class FileController {
 	FileStorageService fileStorageService;
 	
 	@PostMapping("/uploadFile/{id}")
-	public UploadFileResponseDTO uploadFile(@RequestParam("file") MultipartFile file, @PathVariable("id") Long id) {
-		String fileName = fileStorageService.storeFile(file, id);
-		
-		String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
-				.path("/api/file/v1/downloadFile/")
-				.path(fileName)
-				.toUriString();
-		
-		return new UploadFileResponseDTO(fileName, fileDownloadUri, file.getContentType(), file.getSize());
+	public ResponseEntity<?> uploadFile(@RequestParam("file") MultipartFile file, @PathVariable("id") Long id) {
+		CpfFotoDTO dto = fileStorageService.storeFile(file, id);
+
+		return new ResponseEntity<>(dto, HttpStatus.CREATED);
 	}
 	
 	/*@PostMapping("/uploadMultipleFiles")
