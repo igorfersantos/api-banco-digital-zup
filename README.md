@@ -22,6 +22,9 @@ As tecnologias utilizadas até o momento são:
 Tentei ao máximo aplicar a metodologia dos 12 fatores, usando de variáveis de ambiente e separação do código por lógica, serviço, etc.
 
 
+
+
+
 # Inicializando o projeto pela linha de comando/fora da IDE (sem Docker)
 
 
@@ -40,6 +43,8 @@ Tentei ao máximo aplicar a metodologia dos 12 fatores, usando de variáveis de 
 ```
 ./mvnw clean spring-boot:run
 ```
+
+
 
 
 # Endpoint de início
