@@ -20,13 +20,13 @@ public class CpfFoto {
     @Column(columnDefinition = "TEXT", nullable = false)
     private String foto;
 
-    @OneToOne(targetEntity = User.class, cascade = CascadeType.ALL)
+    @OneToOne(targetEntity = Cliente.class, cascade = CascadeType.ALL)
     @JoinColumn(name = "id_cliente", nullable = false)
-    private User user = null;
+    private Cliente cliente = null;
 
-    public CpfFoto(String foto, User user){
+    public CpfFoto(String foto, Cliente cliente){
         this.foto = foto;
-        this.user = user;
+        this.cliente = cliente;
     }
 
 }

@@ -106,7 +106,6 @@
             <version>1.7</version>
         </dependency>
 
-
         <dependency>
             <groupId>br.com.caelum.stella</groupId>
             <artifactId>caelum-stella-core</artifactId>
@@ -119,11 +118,20 @@
             <scope>test</scope>
         </dependency>
 
-        <!--<dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-test</artifactId>
-            <scope>test</scope>
-        </dependency>-->
+        <!-- for Security support -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+
+        <!-- for Tokens support -->
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt</artifactId>
+            <version>0.9.1</version>
+        </dependency>
+
+
     </dependencies>
 
     <build>
@@ -138,7 +146,7 @@
                 <artifactId>flyway-maven-plugin</artifactId>
                 <configuration>
                     <url>jdbc:mysql://localhost:3306/banco_digital_zup?useTimezone=true&amp;serverTimezone=UTC&amp;useSSL=false</url>
-                    <user>root</user>
+                    <cliente>root</cliente>
                     <password>docker</password>
                 </configuration>
                 <dependencies>

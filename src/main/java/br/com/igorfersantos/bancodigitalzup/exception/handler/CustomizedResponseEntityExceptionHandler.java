@@ -1,9 +1,6 @@
 package br.com.igorfersantos.bancodigitalzup.exception.handler;
 
-import br.com.igorfersantos.bancodigitalzup.exception.AgeException;
-import br.com.igorfersantos.bancodigitalzup.exception.ExceptionResponse;
-import br.com.igorfersantos.bancodigitalzup.exception.InvalidFormatException;
-import br.com.igorfersantos.bancodigitalzup.exception.ResourceNotFoundException;
+import br.com.igorfersantos.bancodigitalzup.exception.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -78,10 +75,28 @@ public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExce
                         new Date(),
                         ex.getMessage(),
                         request.getDescription(false));
+
+        HttpStatus status = ((ResourceNotFoundException)ex)
+                .getStatus() == null
+                ? HttpStatus.BAD_REQUEST
+                : ((ResourceNotFoundException) ex).getStatus();
+
+        return new ResponseEntity<>(exceptionResponse, status);
+    }
+
+    @ExceptionHandler(FileStorageException.class)
+    public final ResponseEntity<ExceptionResponse> handleFileStorageExceptions(Exception ex, WebRequest request) {
+        ExceptionResponse exceptionResponse =
+                new ExceptionResponse(
+                        new Date(),
+                        ex.getMessage(),
+                        request.getDescription(false));
+
+
         return new ResponseEntity<>(exceptionResponse, HttpStatus.BAD_REQUEST);
     }
 
-    /*@ExceptionHandler(InvalidJwtAuthenticationException.class)
+    @ExceptionHandler(InvalidJwtAuthenticationException.class)
     public final ResponseEntity<ExceptionResponse> invalidJwtAuthenticationException(Exception ex, WebRequest request) {
         ExceptionResponse exceptionResponse =
                 new ExceptionResponse(
@@ -89,6 +104,6 @@ public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExce
                         ex.getMessage(),
                         request.getDescription(false));
         return new ResponseEntity<>(exceptionResponse, HttpStatus.BAD_REQUEST);
-    }*/
+    }
 
 }

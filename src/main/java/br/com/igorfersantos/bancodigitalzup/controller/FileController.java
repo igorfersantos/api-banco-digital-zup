@@ -1,21 +1,24 @@
 package br.com.igorfersantos.bancodigitalzup.controller;
 
-import br.com.igorfersantos.bancodigitalzup.data.dto.v1.UploadFileResponseDTO;
+import br.com.igorfersantos.bancodigitalzup.data.dto.v1.CpfFotoDTO;
 import br.com.igorfersantos.bancodigitalzup.services.FileStorageService;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import static br.com.igorfersantos.bancodigitalzup.Application.BASE_URL;
 
 @Api(tags = "FileEndpoint")
 @RestController
-@RequestMapping("/api/file/v1")
+@RequestMapping("v1/file")
 public class FileController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(FileController.class);
@@ -25,17 +28,18 @@ public class FileController {
 
 	@Autowired
 	FileStorageService fileStorageService;
-	
+
+	@ApiOperation("Envia um arquivo a partir a partir do body")
 	@PostMapping("/uploadFile/{id}")
-	public UploadFileResponseDTO uploadFile(@RequestParam("file") MultipartFile file, @PathVariable("id") Long id) {
-		String fileName = fileStorageService.storeFile(file, id);
+	public ResponseEntity<CpfFotoDTO> uploadFile(@RequestParam("file") MultipartFile file, @PathVariable("id") Long id) {
+		CpfFotoDTO cpfFotoDTO = fileStorageService.storeFile(file, id);
 		
-		String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
+		/*String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
 				.path("/api/file/v1/downloadFile/")
 				.path(fileName)
-				.toUriString();
+				.toUriString();*/
 		
-		return new UploadFileResponseDTO(fileName, fileDownloadUri, file.getContentType(), file.getSize());
+		return new ResponseEntity<>(cpfFotoDTO, new HttpHeaders(), HttpStatus.CREATED);
 	}
 	
 	/*@PostMapping("/uploadMultipleFiles")

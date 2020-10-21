@@ -1,9 +1,7 @@
 # Banco Digital Zup
 
 ### Status
-O Projeto atualmente se encontra na terceira parte das sete propostas do desafio.
-
----
+O Projeto atualmente se encontra na terceira parte do desafio.
 
 As tecnologias utilizadas até o momento são:
 
@@ -13,6 +11,7 @@ As tecnologias utilizadas até o momento são:
 - Spring MockMvc para testar os serviços
 - Spring Actuator para monitoramento da API
 - Spring HATEOAS habilitado porém está sendo utilizado apenas para obtenção dos recursos no momento
+- JWT e Spring Security para autenticação
 - Hibernate Validator para validação dos dados providos nos endpoints
 - Flyway Migration para automatizar a criação das tabelas e dados
 - Swagger e Swagger UI para auto-documentação da API
@@ -22,7 +21,7 @@ As tecnologias utilizadas até o momento são:
 Tentei ao máximo aplicar a metodologia dos 12 fatores, usando de variáveis de ambiente e separação do código por lógica, serviço, etc.
 
 
-# Inicializando o projeto pela linha de comando/fora da IDE (sem Docker)
+### Inicializando o projeto pela linha de comando/fora da IDE (sem Docker)
 
 
 1.	Navegue até a pasta banco-digital-zup/App
@@ -42,7 +41,7 @@ Tentei ao máximo aplicar a metodologia dos 12 fatores, usando de variáveis de 
 ```
 
 
-# Endpoint de início
+### Endpoint de início
 
 
 A Documentação para os endpoints e o body esperado pode ser vista em

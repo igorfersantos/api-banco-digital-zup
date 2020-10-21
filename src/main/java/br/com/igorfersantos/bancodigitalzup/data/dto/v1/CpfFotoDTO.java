@@ -1,6 +1,7 @@
 package br.com.igorfersantos.bancodigitalzup.data.dto.v1;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -18,5 +19,7 @@ public class CpfFotoDTO implements Serializable {
     private static final long serialVersionUID = 8683332930676984285L;
 
     private String foto;
-    private UserDTO userDTO = null;
+
+    @JsonProperty("user")
+    private ClienteDTO clienteDTO = null;
 }

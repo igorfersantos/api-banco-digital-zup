@@ -19,7 +19,7 @@ import static br.com.igorfersantos.bancodigitalzup.Application.BASE_URL;
 
 @Api(tags = "Address Endpoint - Início")
 @RestController
-@RequestMapping("/api/v1/address")
+@RequestMapping("v1/address")
 public class EnderecoController {
 
     public static final String ENDERECO_CONTROLLER_URL = BASE_URL + WebMvcLinkBuilder.linkTo(EnderecoController.class).toString();

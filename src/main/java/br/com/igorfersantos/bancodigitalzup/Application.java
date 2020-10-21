@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @SpringBootApplication()
 @EnableConfigurationProperties({
@@ -13,16 +14,16 @@ import org.springframework.context.annotation.ComponentScan;
 })
 @EnableAutoConfiguration
 @ComponentScan
-/*
-@ComponentScan({"br.com.igorfersantos.bancodigitalzup.config"})
-@EntityScan("br.com.igorfersantos.bancodigitalzup.data.model")
-@EnableJpaRepositories("br.com.igorfersantos.bancodigitalzup.repository")*/
 public class Application {
 
 	public static final String BASE_URL = "http://localhost:8080";
 
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
+
+		BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder(16);
+		String result = bCryptPasswordEncoder.encode("admin123");
+		System.out.println("My hash " + result);
 	}
 
 }
