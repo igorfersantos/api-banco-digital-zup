@@ -22,13 +22,10 @@ As tecnologias utilizadas até o momento são:
 Tentei ao máximo aplicar a metodologia dos 12 fatores, usando de variáveis de ambiente e separação do código por lógica, serviço, etc.
 
 
-
-
-
 # Inicializando o projeto pela linha de comando/fora da IDE (sem Docker)
 
 
-1.	Navegue até a pasta banco-digital-zup/App
+1.	Navegue até a pasta banco-digital-zup
 2.	Execute o flyway migration para inicilizar o banco de dados
     ***OBS: certifique-se que a base "banco_digital_zup" já foi criada e está vazia, caso contrário o flyway não irá executar as migrações***
 
@@ -43,9 +40,6 @@ Tentei ao máximo aplicar a metodologia dos 12 fatores, usando de variáveis de 
 ```
 ./mvnw clean spring-boot:run
 ```
-
-
-
 
 # Endpoint de início
 
